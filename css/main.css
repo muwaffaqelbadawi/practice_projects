@@ -14,28 +14,23 @@ body {
 }
 
 .user__section {
-  width: 100vw;
-  height: 100vh;
   padding-top: 2rem;
-  padding-left: 1rem;
-
-  display: flex;
-  flex-direction: column;
+  padding-left: 2rem;
 }
 
 .user__label {
-  display: block;
-  flex-direction: column;
+  display: inline-block;
+  width: 120px;
   color: whitesmoke;
 }
 
 .user__input {
-  display: inline;
+  text-align: center;
   width: 40vw;
-  border-width: 2px;
   padding: 0.2rem;
   margin-bottom: 0.5rem;
   border: 2px solid #000;
-  border-radius: 30px;
+  border-radius: 10px;
   outline: none;
 }
+
