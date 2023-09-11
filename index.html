@@ -6,36 +6,55 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>User manipulation</title>
-    <meta name="description" content="">
+    <meta name="author" content="Muwaffaq Elbadawi">
+    <meta name="description" content="UserDB APP">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
 </head>
 
 <body>
-    <section class="user__section ">
+    <section class="user__section">
         <form class="user__form">
 
-            <div class="">
-                <label class="user__label" for="name">First Name:</label>
-                <input id="firsName" class="user__input" type="text">
+            <div class="input__wrapper">
+                <label class="user__label" for="firstName">First Name:</label>
+                <input id="firstName" class="user__input" type="text" autocomplete="off">
             </div>
-            <div class="">
-                <label class="user__label" for="name">Last Name:</label>
-                <input id="lasName" class="user__input" type="text">
-
+            <div class="input__wrapper">
+                <label class="user__label" for="lastName">Last Name:</label>
+                <input id="lastName" class="user__input" type="text" autocomplete="off">
             </div>
-            <div class="">
+            <div class="input__wrapper">
                 <label class="user__label" for="email">Email:</label>
-                <input id="email" class="user__input" type="email">
+                <input id="email" class="user__input" type="email" autocomplete="off">
             </div>
-            <div class="">
+            <div class="input__wrapper">
                 <label class="user__label" for="password">Password:</label>
-                <input id="password" class="user__input" type="password">
+                <input id="password" class="user__input" type="password" autocomplete="off">
+            </div>
+            <div class="user-btn">
+                <button id="add" type="submit">Add</button>
+                <button id="update" type="submit">Update</button>
+
             </div>
         </form>
+        <section class="delete__section">
+            <form>
+                <div class="delete__wrapper">
+                    <label class="delete__label" for="id">ID:</label>
+                    <input id="id" class="user__input" type="text" autocomplete="off">
+                    <button id="delete" class="delete-btn" type="submit" class="delete-btn">Delete</button>
+                </div>
+            </form>
+        </section>
     </section>
-
+    <section class="item-list__section">
+        <ul>
+            <div id="item"></div>
+        </ul>
+        <div id="item-count" class="count"></div>
+    </section>
 </body>
 
 </html>
