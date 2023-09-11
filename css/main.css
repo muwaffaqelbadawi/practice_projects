@@ -43,7 +43,6 @@ button {
   height: 40px;
   border: 2px solid #000;
   border-radius: 20px;
-  margin-top: 0.5rem;
   padding: 0.08rem;
   outline: none;
 }
@@ -52,38 +51,43 @@ button {
   margin-top: 0.5rem;
 }
 
-.delete__section {
-  margin-top: 1.8rem;
+.remove__section {
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
 
-.delete__label {
+.remove__label {
   display: inline-block;
   width: 30px;
   color: whitesmoke;
 }
 
-.delete-btn {
+.remove-btn {
   margin-left: 0.2rem;
 }
 
 .item-list__section {
   width: 90vw;
-  height: 20vh;
+  height: auto;
   color: papayawhip;
   margin-top: 2rem;
   margin-left: 1rem;
 }
 
 ul {
+  width: 100%;
   list-style-type: none;
+  padding-bottom: 1rem;
 }
 
 li {
-  width: 90vw;
+  width: 100%;
 }
 
-.count {
+.footer {
+  position: sticky;
   font-family: sans-serif;
-  padding-top: 0.5rem;
-  color: skyblue;
+  background-color: mediumblue;
+  color: aliceblue;
+  text-align: center;
 }
