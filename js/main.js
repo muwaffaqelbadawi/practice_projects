@@ -96,7 +96,7 @@ const display = (users) => {
   count(users);
 };
 
-/* const list = (users) => {
+const list = (users) => {
   let userItem = "";
   !users.length
     ? (userItem = "")
@@ -104,9 +104,9 @@ const display = (users) => {
         userItem += `<li>Name: ${user.firstName} ${user.lastName} ID: ${user.id}`;
       });
   document.getElementById("item").innerHTML = userItem;
-}; */
+};
 
-const list = (users) => {
+/* const createUserItem = (users) => {
   const parentElement = document.getElementById("itemList");
   const originalUserItem = document.getElementById("item");
   const newList = document.createElement("li");
@@ -120,9 +120,8 @@ const list = (users) => {
         );
       });
   newList.appendChild(userItem);
-
   parentElement.insertBefore(newList, originalUserItem);
-};
+}; */
 
 const count = (users) => {
   document.getElementById("user-count").innerText = `${users.length} ${
