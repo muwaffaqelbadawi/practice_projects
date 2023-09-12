@@ -9,8 +9,8 @@ document.getElementById("put").addEventListener("click", (event) => {
 
 document.getElementById("update").addEventListener("click", (event) => {
   event.preventDefault();
-  const data = getUserData();
-  const user = createUser(data);
+  const currentUser = 0;
+  const user = usersDB[currentUser];
   update(user);
 });
 
@@ -21,18 +21,14 @@ document.getElementById("remove").addEventListener("click", (event) => {
 });
 
 const put = (user) => {
-  const id = createId();
-  user.id = id;
   usersDB.push(user);
-
   display(usersDB);
 };
 
 const update = (user) => {
-  const id = getId();
-  const updatedUser = findUserById(id);
-  const updatedUserIndex = updatedUser.id - 1;
-  user.id = id;
+  const updatedUserIndex = usersDB.findIndex(
+    (updatedUser) => updatedUser.id === user.id
+  );
   usersDB.splice(updatedUserIndex, 1, user);
 
   display(usersDB);
@@ -49,7 +45,9 @@ const remove = (id) => {
 
 const createUser = (data) => {
   const [firstName, lastName, email, password] = data;
+  const id = createId();
   const userObj = {
+    id: id,
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -93,17 +91,12 @@ const getId = () => {
   return id;
 };
 
-const findUserById = (id) => {
-  const user = usersDB.find((user) => user.id === id);
-  return user;
-};
-
 const display = (users) => {
   list(users);
   count(users);
 };
 
-const list = (users) => {
+/* const list = (users) => {
   let userItem = "";
   !users.length
     ? (userItem = "")
@@ -111,6 +104,24 @@ const list = (users) => {
         userItem += `<li>Name: ${user.firstName} ${user.lastName} ID: ${user.id}`;
       });
   document.getElementById("item").innerHTML = userItem;
+}; */
+
+const list = (users) => {
+  const parentElement = document.getElementById("itemList");
+  const originalUserItem = document.getElementById("item");
+  const newList = document.createElement("li");
+  let userItem = "";
+
+  !users.length
+    ? (userItem = "")
+    : users.forEach((user) => {
+        userItem = document.createTextNode(
+          `Name: ${user.firstName} ${user.lastName} ID: ${user.id}`
+        );
+      });
+  newList.appendChild(userItem);
+
+  parentElement.insertBefore(newList, originalUserItem);
 };
 
 const count = (users) => {
