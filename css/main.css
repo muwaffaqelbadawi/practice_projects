@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* || COLORS */
+  --h2-COLOR: whitesmoke;
+}
+
 html,
 body {
   font-size: 18px;
@@ -13,9 +18,19 @@ body {
   background-color: #333;
 }
 
+.h1-header {
+  text-align: center;
+  color: rgb(18, 123, 165);
+}
+
 .user__section {
-  padding-top: 1rem;
-  padding-left: 1rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.personal-info {
+  color: whitesmoke;
+  margin-bottom: 0.8rem;
 }
 
 .user__label {
@@ -47,13 +62,15 @@ button {
   outline: none;
 }
 
-.user-btn {
-  margin-top: 0.5rem;
-}
-
 .remove__section {
   margin-left: 1rem;
   margin-top: 1rem;
+}
+
+.remove-user {
+  color: var(--h2-COLOR);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .remove__label {
@@ -66,12 +83,19 @@ button {
   margin-left: 0.2rem;
 }
 
+.update-btn {
+  margin-left: 0.2;
+}
+
 .item-list__section {
   width: 90vw;
   height: auto;
-  color: papayawhip;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-left: 1rem;
+}
+
+.list-of-users {
+  color: var(--h2-COLOR);
 }
 
 ul {
@@ -82,6 +106,8 @@ ul {
 
 li {
   width: 100%;
+  color: papayawhip;
+  margin-top: 0.5rem;
 }
 
 .footer {

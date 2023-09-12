@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -14,10 +13,13 @@
 </head>
 
 <body>
+    <header class="header">
+        <h1 class="h1-header">Registration System</h1>
+    </header>
     <main>
         <section class="user__section">
+            <h2 class="personal-info">Personal Information</h2>
             <form class="user__form">
-
                 <div class="input__wrapper">
                     <label class="user__label" for="firstName">First Name:</label>
                     <input id="firstName" class="user__input" type="text" autocomplete="off">
@@ -34,35 +36,32 @@
                     <label class="user__label" for="password">Password:</label>
                     <input id="password" class="user__input" type="password" autocomplete="off">
                 </div>
-                <div class="user-btn">
+                <div class="put-btn">
                     <button id="put" type="submit">put</button>
-                    <button id="update" type="submit">Update</button>
                 </div>
             </form>
         </section>
         <section class="remove__section">
+            <h2 class="remove-user">Remove User</h2>
             <form class="remove__form">
                 <div class="remove__wrapper">
                     <label class="remove__label" for="remove-id">ID:</label>
-
-
                     <input id="remove-id" class="user__input" type="number" autocomplete="off">
-
-
-                    <button id="remove" class="remove-btn" type="submit" class="remove-btn">remove</button>
+                    <button id="remove" type="submit" class="remove-btn">remove</button>
+                    <button id="update" class="update-btn">Update</button>
                 </div>
             </form>
         </section>
         <section class="item-list__section">
+            <h2 class="list-of-users">List Of Users</h2>
             <ul>
-                <div id="item"></div>
+                <li id="item"></li>
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p id="user-count" class="user-count"></p>
     </footer>
-
 </body>
 
 </html>

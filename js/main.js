@@ -2,37 +2,40 @@ let usersDB = [];
 
 document.getElementById("put").addEventListener("click", (event) => {
   event.preventDefault();
-  const params = getUserInput();
-  const user = createUser(params);
+  const data = getUserData();
+  const user = createUser(data);
   put(user);
 });
 
 document.getElementById("update").addEventListener("click", (event) => {
   event.preventDefault();
-  /* const params = getUserInput();
-  const user = createUser(params);
-  update(user); */
+  const data = getUserData();
+  const user = createUser(data);
+  update(user);
 });
 
 document.getElementById("remove").addEventListener("click", (event) => {
   event.preventDefault();
-  const id = getRemoveId();
+  const id = getId();
   remove(id);
 });
 
 const put = (user) => {
-  const id = usersDB.length === 0 ? 1 : usersDB[usersDB.length - 1].id + 1;
+  const id = createId();
   user.id = id;
+  usersDB.push(user);
 
   display(usersDB);
-  return usersDB;
 };
 
-const update = (userObj) => {
-  // const index = usersDB.findIndex((user) => user.id === userObj.id);
+const update = (user) => {
+  const id = getId();
+  const updatedUser = findUserById(id);
+  const updatedUserIndex = updatedUser.id - 1;
+  user.id = id;
+  usersDB.splice(updatedUserIndex, 1, user);
 
   display(usersDB);
-  return usersDB;
 };
 
 const remove = (id) => {
@@ -42,27 +45,10 @@ const remove = (id) => {
     : (usersDB = usersDB.filter((user) => user.id !== id));
 
   display(usersDB);
-  return usersDB;
 };
 
-const list = (users) => {
-  let userItem = "";
-  !users.length
-    ? (userItem = "")
-    : users.forEach((user) => {
-        userItem += `<li>Name: ${user.firstName} ${user.lastName} ID: ${user.id}</li>`;
-      });
-  document.getElementById("item").innerHTML = userItem;
-};
-
-const count = (users) => {
-  document.getElementById("user-count").innerText = `${users.length} ${
-    users.length <= 1 ? "user" : "users"
-  } registered`;
-};
-
-const createUser = (params) => {
-  const [firstName, lastName, email, password] = params;
+const createUser = (data) => {
+  const [firstName, lastName, email, password] = data;
   const userObj = {
     firstName: firstName,
     lastName: lastName,
@@ -72,23 +58,34 @@ const createUser = (params) => {
   return userObj;
 };
 
-const getUserInput = () => {
+const createId = () => {
+  const id = usersDB.length === 0 ? 1 : usersDB[usersDB.length - 1].id + 1;
+  return id;
+};
+
+const getUserData = () => {
   const firstNameField = document.getElementById("firstName");
   const lastNameField = document.getElementById("lastName");
   const emailField = document.getElementById("email");
   const passwordField = document.getElementById("password");
-  const userParams = [
+  const userdata = [
     firstName.value,
     lastName.value,
     email.value,
     password.value,
   ];
+  const inputFields = [
+    firstNameField,
+    lastNameField,
+    emailField,
+    passwordField,
+  ];
 
-  clear([firstNameField, lastNameField, emailField, passwordField]);
-  return userParams;
+  clear(inputFields);
+  return userdata;
 };
 
-const getRemoveId = () => {
+const getId = () => {
   const idField = document.getElementById("remove-id");
   const id = Number(idField.value);
 
@@ -96,9 +93,30 @@ const getRemoveId = () => {
   return id;
 };
 
+const findUserById = (id) => {
+  const user = usersDB.find((user) => user.id === id);
+  return user;
+};
+
 const display = (users) => {
   list(users);
   count(users);
+};
+
+const list = (users) => {
+  let userItem = "";
+  !users.length
+    ? (userItem = "")
+    : users.forEach((user) => {
+        userItem += `<li>Name: ${user.firstName} ${user.lastName} ID: ${user.id}`;
+      });
+  document.getElementById("item").innerHTML = userItem;
+};
+
+const count = (users) => {
+  document.getElementById("user-count").innerText = `${users.length} ${
+    users.length <= 1 ? "user" : "users"
+  } registered`;
 };
 
 const clear = (field) => {
